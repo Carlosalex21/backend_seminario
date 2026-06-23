@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caramelos de Cianuro - Sitio Oficial & Reservas</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        display: ['Oswald', 'sans-serif'],
+                    },
+                    colors: {
+                        cdcRed: '#e60000',
+                        cdcDarkRed: '#8b0000',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* FONDO TEXTURIZADO */
+        body {
+            background-color: #050505;
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(30, 0, 0, 0.4) 0%, transparent 70%),
+                linear-gradient(rgba(5, 5, 5, 0.85), rgba(5, 5, 5, 0.95)), 
+                url('https://images.unsplash.com/photo-1531685250784-7569952593d2?q=80&w=2000&auto=format&fit=crop'); 
+            background-size: cover;
+            background-position: center top;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0a0a0a; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #e60000; }
+    </style>
+</head>
+<body class="text-zinc-300 font-sans min-h-screen relative selection:bg-cdcRed selection:text-white">
+
+    <header class="border-b border-white/5 bg-black/40 backdrop-blur-xl sticky top-0 z-40 transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="text-center md:text-left group cursor-pointer">
+                <h1 class="font-display font-bold text-2xl tracking-tighter uppercase leading-none text-white drop-shadow-md group-hover:scale-105 transition-transform">
+                    Caramelos<br><span class="text-cdcRed text-3xl">de Cianuro</span>
+                </h1>
+            </div>
+            <nav>
+                <ul class="flex flex-wrap justify-center gap-6 text-sm font-bold tracking-widest uppercase text-zinc-400">
+                    <li><a href="#" class="text-cdcRed drop-shadow-[0_0_8px_rgba(230,0,0,0.5)]">Inicio</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors duration-300">Biografía</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors duration-300">Música</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors duration-300">Tour</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors duration-300">Tienda</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors duration-300">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    {% if messages %}
+    <div class="max-w-6xl mx-auto px-4 mt-4 z-50 relative">
+        {% for message in messages %}
+        <div class="p-4 rounded-md text-sm font-bold shadow-lg {% if message.tags == 'error' %}bg-red-900/80 text-white border border-red-500{% else %}bg-green-900/80 text-white border border-green-500{% endif %}">
+            <i class="fa-solid {% if message.tags == 'error' %}fa-circle-xmark{% else %}fa-circle-check{% endif %} mr-2"></i> {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <main class="max-w-6xl mx-auto px-4 py-8 space-y-10">
+
+        <section class="relative bg-zinc-950 rounded-2xl overflow-hidden border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.8)] h-[450px] group">
+            <div id="carousel" class="relative w-full h-full">
+                <div class="carousel-item absolute inset-0 opacity-100 transition-opacity duration-1000 ease-in-out">
+                    <img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=1280" alt="CDC Tour 2026" class="w-full h-full object-cover object-center brightness-50 transform scale-105 transition-transform duration-[10s] ease-out">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                    <div class="absolute bottom-10 left-8 md:left-12 max-w-xl">
+                        <span class="bg-cdcRed text-[10px] text-white font-black px-3 py-1.5 uppercase tracking-[0.2em] rounded-sm shadow-[0_0_15px_rgba(230,0,0,0.6)]">En Vivo</span>
+                        <h2 class="font-display text-5xl md:text-7xl font-bold uppercase tracking-tight text-white mt-3 drop-shadow-lg leading-none">Tour 2026</h2>
+                        <p class="text-zinc-300 mt-4 text-sm md:text-base font-medium drop-shadow-md border-l-2 border-cdcRed pl-3">La experiencia de rock más emblemática de Venezuela en su etapa más potente. Acompañanos en esta nueva gira.</p>
+                    </div>
+                </div>
+                <div class="carousel-item absolute inset-0 opacity-0 transition-opacity duration-1000 ease-in-out">
+                    <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=1280" alt="CDC Concierto" class="w-full h-full object-cover object-center brightness-50 transform scale-100 transition-transform duration-[10s] ease-out">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                    <div class="absolute bottom-10 left-8 md:left-12 max-w-xl">
+                        <span class="bg-white text-black text-[10px] font-black px-3 py-1.5 uppercase tracking-[0.2em] rounded-sm shadow-lg">Contrataciones</span>
+                        <h2 class="font-display text-5xl md:text-7xl font-bold uppercase tracking-tight text-white mt-3 drop-shadow-lg leading-none">Reserva tu<br>Fecha</h2>
+                        <p class="text-zinc-300 mt-4 text-sm md:text-base font-medium drop-shadow-md border-l-2 border-white pl-3">Escríbenos a través de nuestro módulo administrativo interno para cotizaciones corporativas y festivales.</p>
+                    </div>
+                </div>
+            </div>
+
+            <button id="prevBtn" class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-cdcRed w-12 h-12 rounded-full text-white transition-all duration-300 z-10 backdrop-blur-md border border-white/20 opacity-0 group-hover:opacity-100 transform -translate-x-4 group-hover:translate-x-0 flex items-center justify-center">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button id="nextBtn" class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-cdcRed w-12 h-12 rounded-full text-white transition-all duration-300 z-10 backdrop-blur-md border border-white/20 opacity-0 group-hover:opacity-100 transform translate-x-4 group-hover:translate-x-0 flex items-center justify-center">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+        </section>
+
+        <section class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            
+            <div class="lg:col-span-5 bg-black/50 border border-white/5 rounded-2xl p-7 backdrop-blur-xl shadow-2xl flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
+                        <h3 class="font-display text-xl font-bold uppercase tracking-wide text-white drop-shadow-md">
+                            Música <span class="text-cdcRed font-sans font-normal normal-case text-sm ml-1 tracking-normal italic">- Últimos lanzamientos</span>
+                        </h3>
+                        <div class="flex gap-2 text-[10px] font-bold uppercase tracking-wider">
+                            <span class="bg-black/60 text-emerald-400 px-2.5 py-1 rounded border border-emerald-500/20 flex items-center gap-1.5 shadow-inner hover:bg-emerald-900/30 cursor-pointer transition-colors">
+                                <i class="fa-brands fa-spotify text-sm"></i> Spotify
+                            </span>
+                            <span class="bg-black/60 text-zinc-300 px-2.5 py-1 rounded border border-white/10 flex items-center gap-1.5 shadow-inner hover:bg-zinc-800 cursor-pointer transition-colors">
+                                <i class="fa-brands fa-apple text-sm"></i> Music
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-6 mb-8">
+                        <div class="w-36 h-36 bg-zinc-950 rounded-xl flex-shrink-0 flex flex-col items-center justify-center border border-white/10 relative overflow-hidden shadow-[0_0_25px_rgba(0,0,0,0.8)] group cursor-pointer">
+                            <div class="absolute inset-0 bg-gradient-to-br from-red-900/40 to-black/80 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                                <span class="text-white text-[10px] font-black tracking-[0.3em] uppercase rotate-[-15deg] bg-black px-3 py-1.5 border border-cdcRed shadow-[0_0_15px_rgba(230,0,0,0.6)]">Retrovisor</span>
+                            </div>
+                            <i class="fa-solid fa-compact-disc text-5xl text-white/10 absolute -bottom-4 -right-4 group-hover:rotate-180 transition-transform duration-700"></i>
+                        </div>
+                        
+                        <div class="w-full space-y-2.5 font-medium">
+                            <div class="group flex justify-between items-center p-2.5 bg-black/30 rounded-lg border border-transparent hover:border-white/10 hover:bg-white/5 transition-all duration-300 cursor-pointer">
+                                <span class="text-sm truncate text-zinc-300 group-hover:text-white group-hover:translate-x-1 transition-all"><strong class="text-cdcRed mr-2 font-display text-base">1.</strong> El Último Polvo</span>
+                                <div class="flex gap-4 text-zinc-500 opacity-0 group-hover:opacity-100 transition-opacity"><i class="fa-brands fa-spotify hover:text-emerald-400"></i><i class="fa-solid fa-download hover:text-white"></i></div>
+                            </div>
+                            <div class="group flex justify-between items-center p-2.5 bg-black/30 rounded-lg border border-transparent hover:border-white/10 hover:bg-white/5 transition-all duration-300 cursor-pointer">
+                                <span class="text-sm truncate text-zinc-300 group-hover:text-white group-hover:translate-x-1 transition-all"><strong class="text-cdcRed mr-2 font-display text-base">2.</strong> No Eres Tú</span>
+                                <div class="flex gap-4 text-zinc-500 opacity-0 group-hover:opacity-100 transition-opacity"><i class="fa-brands fa-spotify hover:text-emerald-400"></i><i class="fa-solid fa-download hover:text-white"></i></div>
+                            </div>
+                            <div class="group flex justify-between items-center p-2.5 bg-black/30 rounded-lg border border-transparent hover:border-white/10 hover:bg-white/5 transition-all duration-300 cursor-pointer">
+                                <span class="text-sm truncate text-zinc-300 group-hover:text-white group-hover:translate-x-1 transition-all"><strong class="text-cdcRed mr-2 font-display text-base">3.</strong> Rubia Sol Morena Luna</span>
+                                <div class="flex gap-4 text-zinc-500 opacity-0 group-hover:opacity-100 transition-opacity"><i class="fa-brands fa-spotify hover:text-emerald-400"></i><i class="fa-solid fa-download hover:text-white"></i></div>
+                            </div>
+                            <div class="group flex justify-between items-center p-2.5 bg-black/30 rounded-lg border border-transparent hover:border-white/10 hover:bg-white/5 transition-all duration-300 cursor-pointer">
+                                <span class="text-sm truncate text-zinc-300 group-hover:text-white group-hover:translate-x-1 transition-all"><strong class="text-cdcRed mr-2 font-display text-base">4.</strong> Sanitarios</span>
+                                <div class="flex gap-4 text-zinc-500 opacity-0 group-hover:opacity-100 transition-opacity"><i class="fa-brands fa-spotify hover:text-emerald-400"></i><i class="fa-solid fa-download hover:text-white"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="#" class="group w-full flex items-center justify-center bg-zinc-900/80 hover:bg-zinc-800 text-xs text-white font-bold py-3.5 rounded-lg border border-white/10 transition-all uppercase tracking-widest shadow-lg">
+                    <i class="fa-solid fa-file-pdf mr-3 text-cdcRed group-hover:scale-125 transition-transform"></i> Descargar Presskit & Rider
+                </a>
+            </div>
+
+            <div class="lg:col-span-7 bg-black/50 border border-white/5 rounded-2xl p-7 backdrop-blur-xl shadow-2xl">
+                <div class="border-b border-white/10 pb-4 mb-6">
+                    <h3 class="font-display text-xl font-bold uppercase tracking-wide text-white drop-shadow-md">
+                        Catálogo <span class="text-cdcRed ml-1">- Productos Disponibles</span>
+                    </h3>
+                </div>
+
+                <div class="space-y-4">
+                    {% if productos %}
+                        {% for producto in productos %}
+                        <div class="group flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 {% if producto.stock_disponible > 0 %}bg-black/40 hover:bg-white/5 border border-white/5 hover:border-white/20 hover:shadow-lg hover:-translate-y-1{% else %}bg-black/20 border border-white/5 opacity-75 grayscale hover:grayscale-0{% endif %} rounded-xl gap-4 transition-all duration-300">
+                            
+                            <div class="flex items-center gap-5 w-full sm:w-auto">
+                                <div class="bg-zinc-950 border-t-2 {% if producto.stock_disponible > 0 %}border-t-cdcRed{% else %}border-t-zinc-600{% endif %} border-x border-b border-white/10 shadow-inner px-4 py-2 rounded-lg text-center min-w-[70px]">
+                                    <span class="block font-display text-xl font-bold {% if producto.stock_disponible > 0 %}text-white{% else %}text-zinc-500{% endif %} leading-none">SKU</span>
+                                    <span class="text-[10px] text-zinc-500 uppercase font-black tracking-widest">{{ producto.codigo_sku }}</span>
+                                </div>
+                                <div class="flex-grow">
+                                    <h4 class="font-display font-bold text-lg leading-tight tracking-wide {% if producto.stock_disponible > 0 %}text-white{% else %}text-zinc-400{% endif %}">{{ producto.nombre }}</h4>
+                                    <p class="text-sm text-zinc-400 font-medium">{{ producto.categoria.nombre }} | Disponibles: {{ producto.stock_disponible }}</p>
+                                </div>
+                            </div>
+
+                            <form action="{% url 'procesar_reserva' %}" method="POST" class="w-full sm:w-auto flex flex-col sm:flex-row items-center gap-2">
+                                {% csrf_token %}
+                                <input type="hidden" name="producto_id" value="{{ producto.id }}">
+                                <input type="hidden" name="nombre" value="Cliente Temporal">
+                                <input type="hidden" name="cedula" value="V-00000000">
+                                <input type="hidden" name="correo" value="cliente@reserva.com">
+                                <input type="hidden" name="fecha_retiro" value="2026-07-01">
+                                <input type="hidden" name="cantidad" value="1">
+                                
+                                {% if producto.stock_disponible > 0 %}
+                                    <button type="submit" class="w-full sm:w-auto bg-gradient-to-r from-cdcRed to-cdcDarkRed hover:from-red-500 hover:to-cdcRed text-white font-bold text-[10px] uppercase tracking-widest px-6 py-3 rounded-md transition-all shadow-[0_4px_15px_rgba(230,0,0,0.4)]">
+                                        Reservar
+                                    </button>
+                                {% else %}
+                                    <button type="button" disabled class="w-full sm:w-auto bg-transparent border border-zinc-700 text-zinc-500 font-bold text-[10px] uppercase tracking-widest px-6 py-3 rounded-md cursor-not-allowed">
+                                        Agotado
+                                    </button>
+                                {% endif %}
+                            </form>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="text-center p-8 border border-white/5 rounded-xl bg-black/20">
+                            <p class="text-zinc-500 font-medium">No hay productos cargados en el inventario.</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-t border-white/10 bg-black/80 mt-16 py-10 text-center text-xs text-zinc-600 space-y-6 backdrop-blur-lg">
+        <div class="flex justify-center gap-8 text-xl text-zinc-500">
+            <a href="#" class="hover:text-white hover:-translate-y-1 transition-all"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="hover:text-white hover:-translate-y-1 transition-all"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#" class="hover:text-white hover:-translate-y-1 transition-all"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" class="hover:text-white hover:-translate-y-1 transition-all"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+        <p class="font-medium tracking-wide uppercase">Copyright &copy; 2026 - Caramelos de Cianuro. Todos los derechos reservados.</p>
+    </footer>
+
+    <div class="fixed bottom-6 right-6 z-50">
+        
+        <div id="faqWindow" class="hidden bottom-20 right-0 absolute w-80 sm:w-96 bg-zinc-950 border border-white/10 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.9)] overflow-hidden mb-2 transition-all duration-300">
+            <div class="bg-gradient-to-r from-cdcDarkRed to-cdcRed p-5 flex justify-between items-center">
+                <h4 class="font-display font-bold text-sm uppercase tracking-widest flex items-center gap-3 text-white">
+                    <i class="fa-solid fa-bolt"></i> Soporte & Reservas
+                </h4>
+                <button id="closeFaq" class="text-white/70 hover:text-white text-lg transition-colors">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="p-5 space-y-2 max-h-96 overflow-y-auto bg-black/90 backdrop-blur-md custom-scrollbar">
+                <div class="border-b border-white/10 pb-3 pt-2">
+                    <button class="faq-toggle w-full text-left font-bold text-[11px] tracking-wider uppercase text-zinc-300 hover:text-cdcRed flex justify-between items-center transition-colors">
+                        <span>¿Cómo reservo una fecha?</span>
+                        <i class="fa-solid fa-chevron-down text-[10px]"></i>
+                    </button>
+                    <p class="faq-content hidden text-zinc-400 text-xs mt-3 text-justify leading-relaxed font-medium">
+                        Debes ingresar a nuestro sistema administrativo para promotores, rellenar el formulario indicando locación, aforo y fecha estimada. El mánager de la banda evaluará la propuesta.
+                    </p>
+                </div>
+                <div class="border-b border-white/10 pb-3 pt-2">
+                    <button class="faq-toggle w-full text-left font-bold text-[11px] tracking-wider uppercase text-zinc-300 hover:text-cdcRed flex justify-between items-center transition-colors">
+                        <span>¿Qué incluye el Rider Técnico?</span>
+                        <i class="fa-solid fa-chevron-down text-[10px]"></i>
+                    </button>
+                    <p class="faq-content hidden text-zinc-400 text-xs mt-3 text-justify leading-relaxed font-medium">
+                        El documento descargable detalla la microfonía, consolas, monitores y backline oficiales mínimos requeridos para asegurar el sonido óptimo del show.
+                    </p>
+                </div>
+                <div class="border-b border-white/10 pb-3 pt-2">
+                    <button class="faq-toggle w-full text-left font-bold text-[11px] tracking-wider uppercase text-zinc-300 hover:text-cdcRed flex justify-between items-center transition-colors">
+                        <span>¿Manejan formato acústico?</span>
+                        <i class="fa-solid fa-chevron-down text-[10px]"></i>
+                    </button>
+                    <p class="faq-content hidden text-zinc-400 text-xs mt-3 text-justify leading-relaxed font-medium">
+                        Sí, disponemos de un formato adaptado para teatros y eventos íntimos. Puedes solicitarlo al momento de enviar tu propuesta.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="relative">
+            <div class="absolute inset-0 bg-cdcRed rounded-full animate-ping opacity-20"></div>
+            
+            <button id="faqBtn" class="relative bg-gradient-to-br from-cdcRed to-cdcDarkRed hover:from-red-500 hover:to-cdcRed text-white w-16 h-16 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(230,0,0,0.5)] border border-red-400/30 transition-all duration-300 transform hover:scale-110 group">
+                <i class="fa-solid fa-headset text-2xl group-hover:rotate-12 transition-transform"></i>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // LÓGICA DEL CARRUSEL
+        const slides = document.querySelectorAll('.carousel-item');
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            slides[currentSlide].classList.replace('opacity-100', 'opacity-0');
+            currentSlide = (index + slides.length) % slides.length;
+            slides[currentSlide].classList.replace('opacity-0', 'opacity-100');
+        }
+
+        document.getElementById('nextBtn').addEventListener('click', () => showSlide(currentSlide + 1));
+        document.getElementById('prevBtn').addEventListener('click', () => showSlide(currentSlide - 1));
+
+        setInterval(() => showSlide(currentSlide + 1), 6000);
+
+        // LÓGICA DEL BOTÓN FAQ
+        const faqBtn = document.getElementById('faqBtn');
+        const faqWindow = document.getElementById('faqWindow');
+        const closeFaq = document.getElementById('closeFaq');
+
+        faqBtn.addEventListener('click', () => {
+            faqWindow.classList.toggle('hidden');
+        });
+
+        closeFaq.addEventListener('click', () => {
+            faqWindow.classList.add('hidden');
+        });
+
+        const toggles = document.querySelectorAll('.faq-toggle');
+        toggles.forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const content = toggle.nextElementSibling;
+                const icon = toggle.querySelector('i');
+                
+                document.querySelectorAll('.faq-content').forEach(c => {
+                    if(c !== content && !c.classList.contains('hidden')) {
+                        c.classList.add('hidden');
+                        c.previousElementSibling.querySelector('i').classList.replace('fa-chevron-up', 'fa-chevron-down');
+                    }
+                });
+
+                content.classList.toggle('hidden');
+                icon.classList.toggle('fa-chevron-down');
+                icon.classList.toggle('fa-chevron-up');
+            });
+        });
+    </script>
+</body>
+</html>
